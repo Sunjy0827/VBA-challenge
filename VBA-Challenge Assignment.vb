@@ -93,6 +93,7 @@ Sub stockdata()
             ws.Range("J" & Summary_Table_Row).NumberFormat = "0.00"
             ws.Range("K" & Summary_Table_Row).NumberFormat = "0.00%"
             
+            
             'coloring the column "J", but no color for 0.00 (no change value)
 
             If quarterlychange < 0 Then
@@ -105,6 +106,17 @@ Sub stockdata()
                                    
             End If
             
+            'coloring the column "K", but no color for 0.00 (adding the missed part)
+            
+            If percentchange < 0 Then
+            
+                ws.Range("K" & Summary_Table_Row).Interior.ColorIndex = 3
+            
+            ElseIf percentchange > 0 Then
+            
+                ws.Range("K" & Summary_Table_Row).Interior.ColorIndex = 4
+                                   
+            End If                       
                                 
             Summary_Table_Row = Summary_Table_Row + 1
             ' Reset volume, quarterlychange, percentchange for the next ticker
